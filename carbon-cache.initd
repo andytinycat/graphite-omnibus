@@ -1,0 +1,62 @@
+### BEGIN INIT INFO
+# Provides:          graphite-carbon-cache
+# Required-Start:    $local_fs $remote_fs $network $syslog $named
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named
+# Should-Start:      $all
+# Should-Stop:       $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/stop Graphite Carbon Cache
+# Description:       Start/stop Graphite Carbon Cache
+### END INIT INFO
+
+APP=graphite-carbon-cache
+USER=root
+BASE=/opt/graphite-omnibus/graphite
+
+start() {
+  echo "Starting $APP"
+  su -l $USER -c "cd $BASE/bin && ./carbon-cache.py start"
+  return $?
+}
+
+stop() {
+  echo "Stopping $APP"
+  su -l $USER -c "cd $BASE/bin && ./carbon-cache.py stop"
+  return $?
+}
+
+status() {
+  su -l $USER -c "cd $BASE/bin && ./carbon-cache.py status"
+  return $?
+}
+
+case "$1" in
+  # Start command
+  start)
+    start
+    RETVAL=$?
+    ;;
+  # Stop command
+  stop)
+    stop
+    RETVAL=$?
+    ;;
+  # Restart command
+  restart)
+    stop
+    start
+    RETVAL=$?
+    ;;
+  # Status command
+  status)
+    status
+    RETVAL=$?
+    ;;
+  *)
+    echo "Usage: $APP {start|restart|stop|status}"
+    RETVAL=2
+    ;;
+esac
+ 
+exit $RETVAL
