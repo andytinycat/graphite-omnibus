@@ -18,6 +18,7 @@ This is extremely alpha, and should be improved. For example, the following woul
 - hosting packages for people to make life easier
 - embed gunicorn so the webapp can run without any other dependencies
 - move config to /etc/graphite
+- postinstall scripts should make the database..?
 
 ## Building
 
