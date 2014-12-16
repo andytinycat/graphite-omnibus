@@ -12,7 +12,14 @@ class GraphiteDependencies < FPM::Cookery::Recipe
 
   section 'interpreters'
   
-  depends 'libcairo2', 'libffi-dev'
+  platforms [:ubuntu, :debian] do
+    depends 'libcairo2', 'libffi-dev'
+  end
+
+  platforms [:fedora, :redhat, :centos] do
+    build_depends 'cairo-devel', 'libffi-devel'
+    depends 'cairo', 'libffi'
+  end
 
   def build
     # Do nothing

@@ -14,13 +14,24 @@ class Python < FPM::Cookery::Recipe
 
   section 'interpreters'
 
-  build_depends 'mime-support', 'libbz2-dev', 'libdb-dev', 'libexpat-dev', 'libgcc1',
-                'libncurses-dev', 'libreadline6-dev', 'libsqlite3-dev', 'libtinfo-dev',
-                'libssl-dev', 'g++'
+  platforms [:ubuntu, :debian] do
+    build_depends 'mime-support', 'libbz2-dev', 'libdb-dev', 'libexpat-dev', 'libgcc1',
+                  'libncurses-dev', 'libreadline6-dev', 'libsqlite3-dev', 'libtinfo-dev',
+                  'libssl-dev', 'g++'
 
-  depends       'mime-support', 'libbz2-1.0', 'libdb5.1', 'libexpat1', 'libgcc1',
-                'libncurses5', 'libreadline6', 'libsqlite3-0', 'libtinfo5',
-                'libssl1.0.0'
+    depends       'mime-support', 'libbz2-1.0', 'libdb5.1', 'libexpat1', 'libgcc1',
+                  'libncurses5', 'libreadline6', 'libsqlite3-0', 'libtinfo5',
+                  'libssl1.0.0'
+  end
+
+  platforms [:fedora, :redhat, :centos] do
+    build_depends 'bzip2-devel', 'db4-devel', 'expat-devel', 'libgcc',
+                  'ncurses-devel', 'readline-devel', 'sqlite-devel', 
+                  'openssl-devel', 'gcc-c++'
+    depends       'bzip2-libs', 'db4', 'expat', 'libgcc',
+                  'ncurses-libs', 'readline', 'sqlite',
+                  'openssl'
+  end
 
   def build
     configure :prefix => "/opt/graphite-omnibus", 'disable-install-doc' => true, 'enable-unicode' => 'ucs4'
