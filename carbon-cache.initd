@@ -1,3 +1,10 @@
+#!/bin/sh
+#
+# graphite-carbon-cache  init file for starting up the carbon-cache daemon
+#
+# chkconfig:   2345 20 80
+# description: Starts and stops the carbon-cache daemon.
+#
 ### BEGIN INIT INFO
 # Provides:          graphite-carbon-cache
 # Required-Start:    $local_fs $remote_fs $network $syslog $named

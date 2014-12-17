@@ -1,3 +1,10 @@
+#!/bin/sh
+#
+# graphite-carbon-relay  init file for starting up the carbon-relay daemon
+#
+# chkconfig:   2345 20 80
+# description: Starts and stops the carbon-relay daemon.
+#
 ### BEGIN INIT INFO
 # Provides:          graphite-carbon-relay
 # Required-Start:    $local_fs $remote_fs $network $syslog $named
