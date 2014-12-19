@@ -15,6 +15,7 @@ class GraphiteOmnibus < FPM::Cookery::Recipe
   omnibus_package true
   omnibus_recipes "python", "python-setuptools", "graphite-dependencies", "whisper", "carbon", "graphite-web", "init-scripts"
   omnibus_dir     "/opt/graphite-omnibus"
+  omnibus_additional_paths "/etc/init.d/graphite-carbon-relay", "/etc/init.d/graphite-carbon-cache"
 
   def build
     # Nothing
