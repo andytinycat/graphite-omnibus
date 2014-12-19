@@ -2,11 +2,11 @@ class Python < FPM::Cookery::Recipe
   description 'The Python runtime'
 
   name 'python'
-  version '2.7.5'
+  version '2.7.9'
   revision 1
   homepage 'http://python.org'
-  source 'http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz'
-  sha256 '8e1b5fa87b91835afb376a9c0d319d41feca07ffebc0288d97ab08d64f48afbf'
+  source 'https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tgz'
+  sha256 'c8bba33e66ac3201dabdc556f0ea7cfe6ac11946ec32d357c4c6f9b018c12c5b'
 
   maintainer '<github@tinycat.co.uk>'
   vendor     'fpm'
