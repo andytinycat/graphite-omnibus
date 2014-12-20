@@ -13,7 +13,10 @@ class GraphiteOmnibus < FPM::Cookery::Recipe
   source '', :with => :noop
 
   omnibus_package true
-  omnibus_recipes "python", "python-setuptools", "graphite-dependencies", "whisper", "carbon", "graphite-web", "init-scripts"
+  omnibus_recipes "python", "python-setuptools", "graphite-dependencies",
+                  "whisper", "carbon", "graphite-web",
+                  "carbonate",
+                  "init-scripts"
   omnibus_dir     "/opt/graphite-omnibus"
 
   def build
